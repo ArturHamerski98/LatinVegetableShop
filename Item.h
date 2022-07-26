@@ -4,24 +4,25 @@
 class Item
 {
     int ID;
-    std::string supplier;
-    std::string name;
+    std::string name; 
     std::string description;
-    int weight;
     double price;
+    bool availability;
+    std::string supplier;
     struct productCart {
         std::string name;
         std::string description;
-        int weight;
         double price;
+        bool availability;
+        std::string supplier;
     };
     productCart prodCart;
 public:
-    Item(std::string supplier, std::string name, std::string description, int weight, double price);
+    Item(int ID, std::string name, std::string description, double price, bool availability, std::string supplier);
     int getID();
-    std::string getSupplier();
     std::string getName();
     std::string getDescription();
-    int getWeight();
     double getPrice();
+    bool getAvailability();
+    std::string getSupplier();
 };

@@ -1,57 +1,78 @@
 #include "ProductList.h"
+#include <fstream>
+#include <list>
+#include <vector>
+#include <string>
+#include <sstream>
 
+void ProductList::readingDataFromCSVFile()
+{
+    std::vector < std::vector < std::string >> content;
+    std::vector < std::string > row;
+    std::string line, word;
+    std::fstream file("Items.csv", std::ios::in);
+    if (file.is_open()) {
+        while (getline(file, line)) {
+            row.clear();
 
-std::vector<int> ProductList::sortingByPrice(std::list<Item> myList2) {
+            std::stringstream str(line);
 
-    std::vector <int> priceVector;
-    std::list<Item>::iterator price;
+            while (getline(str, word, ','))
+                row.push_back(word);
+            content.push_back(row);
+        }
+        file.close();
+        std::cout << content.size();
+    }
+    else
+        std::cout << "Could not open the file\n";
 
-    for (price = myList2.begin(); price != myList2.end(); price++) {
-    int id = price->getPrice();
-   
-    priceVector.push_back(id);
+    for (int i = 0; i < content.size(); i++) {
+        bool value;
+        if (content[i][4] == "1")
+            value = true;
+        else
+            value = false;
+        Item item(stoi(content[i][0]), content[i][1], content[i][2], stod(content[i][3]), value, content[i][5]);
+        //int ID, std::string name, std::string description, double price, bool availability, std::string supplier
+        myList.push_back(item);
+
+    }
+    std::list<Item>::iterator it;
+    int aaaa = 0;
+    for (it = myList.begin(); it != myList.end(); it++)
+    {
+        // Access the object through iterator
+        std::string id = it->getName();
+        //std::cout << aaaa << " ";
+        //std::cout << id << std::endl;
+        aaaa++;
     }
 
-    std::sort(priceVector.begin(), priceVector.end());
-    return priceVector;
+   
+
 }
 
-
-std::vector<std::string>ProductList::filteringSuppliers(std::list<Item> myList2) {
-
+std::vector<std::string> ProductList::filteringSuppliers(std::string choosenSupplier)
+{
     std::vector <std::string> supplierVector;
-    std::list<Item>::iterator supplier;
 
-    for (auto supplier = myList2.begin(); supplier != myList2.end(); supplier++) {
-        std::string id = supplier->getSupplier();
+  
 
-        supplierVector.push_back(id);
+    for (auto item = myList.begin(); item != myList.end(); item++) {
+        if (item->getSupplier() == choosenSupplier)
+            std::cout << item->getSupplier() << "||" << item->getName() << "||" << item->getPrice() << "\n";
+            int x = 5;
     }
     return supplierVector;
+    
 }
 
-/*std::vector<Item> filteringCategory(std::list<Item> myList2) {
-
-    std::vector <std::string> categoryVector;
-    std::list<Item>::iterator category;
-
-    for (auto supplier = myList2.begin(); category != myList2.end(); supplier++) {
-        std::string id = supplier->getSupplier();
-
-        categoryVector.push_back(id);
-    }
-    return categoryVector;
-
-}
-*/
-
-void displayProducts(std::list<Item>myList2) {
-
-    std::list<Item>::iterator name;
-   
-
-    for (auto name = myList2.begin(); name != myList2.end(); name++) {
+void ProductList::displayProducts()
+{
+    for (auto name = myList.begin(); name != myList.end(); name++) {
         std::string id = name->getName();
-        std::cout << id << std::endl;
+        //std::cout << id << std::endl;
     }
+
 }
