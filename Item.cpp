@@ -1,4 +1,6 @@
 #include "Item.h"
+#include<iostream>
+
 
 Item::Item(int ID, std::string name, std::string description, double price, bool availability, std::string supplier) {
     this->ID = ID;
