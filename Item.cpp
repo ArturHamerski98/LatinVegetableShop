@@ -1,22 +1,20 @@
 #include "Item.h"
-#include<iostream>
 
-Item::Item(std::string supplier, std::string name, std::string description, int weight, double price) {
-    this->supplier = supplier;
+Item::Item(int ID, std::string name, std::string description, double price, bool availability, std::string supplier) {
+    this->ID = ID;
     this->name = name;
     this->description = description;
-    this->weight = weight;
     this->price = price;
-    prodCart.description = description;
+    this->availability = availability;
+    this->supplier = supplier;
     prodCart.name = name;
+    prodCart.description = description;
     prodCart.price = price;
-    prodCart.weight = weight;
+    prodCart.availability = availability;
+    prodCart.supplier = supplier;
 }
 int Item::getID() {
     return ID;
-}
-std::string Item::getSupplier() {
-    return supplier;
 }
 std::string Item::getName() {
     return name;
@@ -24,9 +22,12 @@ std::string Item::getName() {
 std::string Item::getDescription() {
     return description;
 }
-int Item::getWeight() {
-    return weight;
-}
 double Item::getPrice() {
     return price;
+}
+bool Item::getAvailability() {
+    return availability;
+}
+std::string Item::getSupplier() {
+    return supplier;
 }
