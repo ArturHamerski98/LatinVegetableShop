@@ -45,7 +45,10 @@ void ProductList::readingDataFromCSVFile()
         // Access the object through iterator
         std::string id = it->getName();
         std::cout << aaaa << " ";
-        std::cout << id << std::endl;
+    std::cout << id << std::endl;
         aaaa++;
     }
+
+    std::sort(priceVector.begin(), priceVector.end());
+    return priceVector;
 }
