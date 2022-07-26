@@ -1,5 +1,5 @@
 #include "Item.h"
-#include<iostream>
+//#include<iostream>
 
 Item::Item(std::string supplier, std::string name, std::string description, int weight, double price) {
     this->supplier = supplier;
