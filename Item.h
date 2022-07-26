@@ -9,6 +9,7 @@ class Item
     double price;
     bool availability;
     std::string supplier;
+    int quantity;
     struct productCart {
         std::string name;
         std::string description;

@@ -7,6 +7,7 @@ Item::Item(int ID, std::string name, std::string description, double price, bool
     this->price = price;
     this->availability = availability;
     this->supplier = supplier;
+    quantity = 0;
     prodCart.name = name;
     prodCart.description = description;
     prodCart.price = price;
