@@ -44,11 +44,35 @@ void ProductList::readingDataFromCSVFile()
     {
         // Access the object through iterator
         std::string id = it->getName();
-        std::cout << aaaa << " ";
-    std::cout << id << std::endl;
+        //std::cout << aaaa << " ";
+        //std::cout << id << std::endl;
         aaaa++;
     }
 
-    std::sort(priceVector.begin(), priceVector.end());
-    return priceVector;
+   
+
+}
+
+std::vector<std::string> ProductList::filteringSuppliers(std::string choosenSupplier)
+{
+    std::vector <std::string> supplierVector;
+
+  
+
+    for (auto item = myList.begin(); item != myList.end(); item++) {
+        if (item->getSupplier() == choosenSupplier)
+            std::cout << item->getSupplier() << "||" << item->getName() << "||" << item->getPrice() << "\n";
+            int x = 5;
+    }
+    return supplierVector;
+    
+}
+
+void ProductList::displayProducts()
+{
+    for (auto name = myList.begin(); name != myList.end(); name++) {
+        std::string id = name->getName();
+        //std::cout << id << std::endl;
+    }
+
 }
