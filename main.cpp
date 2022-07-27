@@ -9,11 +9,10 @@
 #include <sstream>
 
 int main() {
+
     
-    Menu menu;
-    menu.superMenu();
+    //Item mis(12, "dsada", "sadas", 232, true, "Spain",);
+    //mis.showProductCart();
     
-   
-  
     return 0;
 }

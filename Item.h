@@ -22,7 +22,8 @@ class Item
         std::string category;
        
     };
-    std::vector<std::string> vectorCategory{ "fresh", "short expiry date", "at your own risk" };
+public:
+    //std::vector<std::string> vectorCategory{ "fresh", "short expiry date", "at your own risk" };
     productCart prodCart;
 public:
     Item(int ID, std::string name, std::string description, double price, bool availability, std::string supplier, std::string category);

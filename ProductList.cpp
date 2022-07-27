@@ -1,9 +1,11 @@
 #include "ProductList.h"
-#include <fstream>
-#include <list>
-#include <vector>
-#include <string>
-#include <sstream>
+
+int ProductList::ranndomCategory() {
+
+    // srand(time(NULL));
+
+    return static_cast<int>(rand() % 2 + 0);
+}
 
 void ProductList::readingDataFromCSVFile()
 {
@@ -33,7 +35,11 @@ void ProductList::readingDataFromCSVFile()
             value = true;
         else
             value = false;
-        Item item(stoi(content[i][0]), content[i][1], content[i][2], stod(content[i][3]), value, content[i][5],"Xd");
+
+        std::vector<std::string> vectorCategory{ "fresh", "short expiry date", "at your own risk" };
+        std::string category = vectorCategory[ranndomCategory()];
+
+        Item item(stoi(content[i][0]), content[i][1], content[i][2], stod(content[i][3]), value, content[i][5],category);
         //int ID, std::string name, std::string description, double price, bool availability, std::string supplier
         myList.push_back(item);
 
@@ -81,5 +87,26 @@ void  ProductList::filteringCategory(std::string choosenCategory) {
             std::cout << item->getCategory() << "||" << item->getName() << "||" << item->getPrice() << "\n";
         int x = 5;
     }
-
 }
+
+
+/*void ProductList::sortingByName(int arr[], int l, int r) {
+
+        if (l < r) {
+            int pivot = l;
+            int i = l;
+            int j = r;
+            while (i < j) {
+                while (arr[i] <= arr[pivot] && i < r)
+                    i++;
+                while (arr[j] > arr[pivot])
+                    j--;
+                if (i < j) {
+                   swap(&arr[i], &arr[j]);
+                }
+            }
+            swap(&arr[pivot], &arr[j]);
+            sortingByName(arr, l, j - 1);
+            sortingByName(arr, j + 1, r);
+        }
+ }*/

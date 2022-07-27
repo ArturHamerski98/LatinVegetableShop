@@ -20,22 +20,21 @@ void Menu::superMenu() {
 	std::cout << " 8. Order confirmation\n";
 	std::cout << " 9. Admin panel\n";
 
-	//swieze, 
-	Item mis(12, "dsada", "sadas", 232, true, "Spain", "ds");
+
 	choice = 1;
 	switch (choice) {
 	
 	case 1:
-
-		mis.showProductCart();
 		productList.displayProducts();
 		break;	
+
 	case 2:
 		productList.filteringSuppliers(choosenCountry);
 		break;
 	case 3:
 		productList.filteringCategory(choosenCountry);
 		break;
+
 	case 4: //sortowanie
 	case 5: //sortowanie 
 	case 6:
