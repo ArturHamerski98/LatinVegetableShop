@@ -1,6 +1,7 @@
 #include <iostream>
 #include "Item.h"
 #include "ProductList.h"
+#include "Menu.h"
 #include <fstream>
 #include <list>
 #include <vector>
@@ -8,9 +9,11 @@
 #include <sstream>
 
 int main() {
-    ProductList productList;
-    productList.readingDataFromCSVFile();
-    productList.filteringSuppliers("Poland");
-    productList.displayProducts();
+    
+    Menu menu;
+    menu.superMenu();
+    
+   
+  
     return 0;
 }

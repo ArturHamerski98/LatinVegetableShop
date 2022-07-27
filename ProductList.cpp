@@ -33,7 +33,7 @@ void ProductList::readingDataFromCSVFile()
             value = true;
         else
             value = false;
-        Item item(stoi(content[i][0]), content[i][1], content[i][2], stod(content[i][3]), value, content[i][5]);
+        Item item(stoi(content[i][0]), content[i][1], content[i][2], stod(content[i][3]), value, content[i][5],"Xd");
         //int ID, std::string name, std::string description, double price, bool availability, std::string supplier
         myList.push_back(item);
 
@@ -48,31 +48,38 @@ void ProductList::readingDataFromCSVFile()
         //std::cout << id << std::endl;
         aaaa++;
     }
-
-   
-
 }
 
-std::vector<std::string> ProductList::filteringSuppliers(std::string choosenSupplier)
+void ProductList::filteringSuppliers(std::string choosenSupplier)
 {
     std::vector <std::string> supplierVector;
-
-  
 
     for (auto item = myList.begin(); item != myList.end(); item++) {
         if (item->getSupplier() == choosenSupplier)
             std::cout << item->getSupplier() << "||" << item->getName() << "||" << item->getPrice() << "\n";
             int x = 5;
-    }
-    return supplierVector;
-    
+    } 
 }
 
 void ProductList::displayProducts()
 {
     for (auto name = myList.begin(); name != myList.end(); name++) {
-        std::string id = name->getName();
+       // std::string id = name->getName();
+       
         //std::cout << id << std::endl;
+        std::cout << name->getName() << "||" << name->getPrice() << "||" << name->getID();
+        //std::cout <<  << std::endl;
+    }
+}
+
+void  ProductList::filteringCategory(std::string choosenCategory) {
+
+    std::vector <std::string> categoryVector1;
+
+    for (auto item = myList.begin(); item != myList.end(); item++) {
+        if (item->getCategory() == choosenCategory)
+            std::cout << item->getCategory() << "||" << item->getName() << "||" << item->getPrice() << "\n";
+        int x = 5;
     }
 
 }
