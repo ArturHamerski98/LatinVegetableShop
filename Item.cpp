@@ -1,12 +1,13 @@
 #include "Item.h"
 
-Item::Item(int ID, std::string name, std::string description, double price, bool availability, std::string supplier) {
+Item::Item(int ID, std::string name, std::string description, double price, bool availability, std::string supplier, std::string category) {
     this->ID = ID;
     this->name = name;
     this->description = description;
     this->price = price;
     this->availability = availability;
     this->supplier = supplier;
+    this->category = category;
     prodCart.name = name;
     prodCart.description = description;
     prodCart.price = price;
@@ -22,6 +23,10 @@ std::string Item::getName() {
 std::string Item::getDescription() {
     return description;
 }
+std::string Item::getCategory()
+{
+    return category;
+}
 double Item::getPrice() {
     return price;
 }
@@ -31,3 +36,4 @@ bool Item::getAvailability() {
 std::string Item::getSupplier() {
     return supplier;
 }
+
