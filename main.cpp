@@ -8,6 +8,7 @@
 int main() {
    
     Menu menu;
+    std::cout << "Welcome in our shop. Choose option:\n";
     menu.superMenu();
 
     return 0;

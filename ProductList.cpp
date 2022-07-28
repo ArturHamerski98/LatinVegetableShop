@@ -25,6 +25,7 @@ void ProductList::readingDataFromCSVFile()
 
     srand(time(NULL));
     std::vector<std::string> vectorCategory{ "fresh", "short expiry date", "at your own risk" };
+    //std::vector<std::string> vectorCategory{ "1", "2", "3" };
     for (int i = 0; i < content.size(); i++) {
         bool value;
         if (content[i][4] == "1")
@@ -46,17 +47,32 @@ void ProductList::readingDataFromCSVFile()
         //std::cout << id << std::endl;
         aaaa++;
     }
-
-   
-
 }
 
-std::vector<std::string> ProductList::filteringSuppliers(std::string chosenSupplier)
+std::vector<std::string> ProductList::filteringSuppliers()
 {
     std::vector <std::string> supplierVector;
+    std::string chosenSupplier{};
 
-  
+    while (chosenSupplier != "1" && chosenSupplier != "2" && chosenSupplier != "3") {
+        std::cout << "Type number to choose supplier to filter:\n";
+        std::cout << "1. Spain \n";
+        std::cout << "2. Poland\n";
+        std::cout << "3. France\n";
 
+        std::cin >> chosenSupplier;
+    }
+
+        if (chosenSupplier == "1")
+            chosenSupplier = "Spain";
+
+        if (chosenSupplier == "2")
+            chosenSupplier = "Poland";
+
+        if (chosenSupplier == "3")
+            chosenSupplier = "France";
+
+   
     for (auto item = myList.begin(); item != myList.end(); item++) {
         if (item->getSupplier() == chosenSupplier)
             std::cout << item->getSupplier() << "||" << item->getName() << "||" << item->getPrice() << "\n";
@@ -68,17 +84,35 @@ std::vector<std::string> ProductList::filteringSuppliers(std::string chosenSuppl
     
 }
 
-std::vector<std::string> ProductList::filteringCategory(std::string chosenCategory)
+std::vector<std::string> ProductList::filteringCategory()
 {
-    std::vector <std::string> categoryVector1;
+   std::vector <std::string> categoryVector1;
+   std:: string chosenCategory{};
+
+   while (chosenCategory != "1" && chosenCategory != "2" && chosenCategory != "3") {
+
+       std::cout << "Type number to choose category to filter:\n";
+       std::cout << "1. Fresh\n";
+       std::cout << "2. Short expiry date\n";
+       std::cout << "3. At your own risk \n";
+
+       std::cin >> chosenCategory;
+   }
+
+       if (chosenCategory == "1")
+           chosenCategory = "fresh";
+  
+       if (chosenCategory == "2")
+           chosenCategory = "short expiry date";
+
+       if (chosenCategory == "3")
+           chosenCategory = "at your own risk";
+
 
     for (auto item = myList.begin(); item != myList.end(); item++) {
-        if(chosenCategory==(item->getCategory()))
+        if(chosenCategory ==(item->getCategory()))
             std::cout << item->getID() << "||" << item->getName() << "||" << item->getCategory() << "$||" << std::endl;
-        //dodac zeby nie wyswietlala sie tylko nazwa ale tez ID||NAZWA||CENA
     }
-    
-    
     return categoryVector1;
 }
 
@@ -87,7 +121,29 @@ void ProductList::displayProducts()
     for (auto item = myList.begin(); item != myList.end(); item++) {
       
         std::cout << item->getID()<<"||" << item->getName() << "||" << item->getCategory() << "$||" << std::endl;
-        //dodac zeby nie wyswietlala sie tylko nazwa ale tez ID||NAZWA||CENA
     }
 
+}
+
+void askAfterFiltering() {
+
+    std::cout << "What are you want to do now?\n";
+
+    std::cout << "1. Add product to cart\n";
+    std::cout << "2. Sorting products by name\n";
+    std::cout << "3. Sorting products by price\n";
+    std::cout << "4. Back to MENU\n";
+
+    int choice{};
+    std::cin >> choice; 
+
+
+    switch (choice) {
+
+    case 1: 
+    case 2:
+    case 3: 
+    case 4: 
+
+    }
 }

@@ -5,10 +5,9 @@ void Menu::superMenu() {
 	ProductList productList;
 
 	int choice = 0;
-	std::string chosenCountry{}, chosenCategory{};
 	productList.readingDataFromCSVFile();
 
-	std::cout << "Welcome in our shop. Choose option:\n";
+
 
 	std::cout << " 1. Review all products\n";
 	std::cout << " 2. Filter by supplier\n";
@@ -20,10 +19,12 @@ void Menu::superMenu() {
 	std::cout << " 8. Order confirmation\n";
 	std::cout << " 9. Admin panel\n";
 
+	std::cout << "Your choice:";
+	std::cin >> choice;
+
 
 	while (true) {
-		std::cout << "choice:";
-		std::cin >> choice;
+		
 		switch (choice) {
 
 		case 1:
@@ -32,11 +33,10 @@ void Menu::superMenu() {
 			break;
 
 		case 2:
-			productList.filteringSuppliers(chosenCountry);
+			productList.filteringSuppliers();
 			break;
 		case 3:
-			chosenCategory = "fresh";
-			productList.filteringCategory(chosenCategory);
+			productList.filteringCategory();
 			break;
 
 		case 4: //sortowanie
@@ -47,6 +47,7 @@ void Menu::superMenu() {
 		case 9:
 			break;
 		}
+		break;
 	}
 	
 }
