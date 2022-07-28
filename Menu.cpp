@@ -4,11 +4,11 @@ void Menu::superMenu() {
 
 	ProductList productList;
 
-	int choice = 0; 
-	std::string choosenCountry{};
+	int choice = 0;
+	std::string chosenCountry{}, chosenCategory{};
 	productList.readingDataFromCSVFile();
 
-	std::cout << "Welcome in our shop. Choose option: ";
+	std::cout << "Welcome in our shop. Choose option:\n";
 
 	std::cout << " 1. Review all products\n";
 	std::cout << " 2. Filter by supplier\n";
@@ -21,26 +21,32 @@ void Menu::superMenu() {
 	std::cout << " 9. Admin panel\n";
 
 
-	choice = 1;
-	switch (choice) {
-	
-	case 1:
-		productList.displayProducts();
-		break;	
+	while (true) {
+		std::cout << "choice:";
+		std::cin >> choice;
+		switch (choice) {
 
-	case 2:
-		productList.filteringSuppliers(choosenCountry);
-		break;
-	case 3:
-		productList.filteringCategory(choosenCountry);
-		break;
+		case 1:
+			std::cout << "xsadfasdfas";
+			productList.displayProducts();
+			break;
 
-	case 4: //sortowanie
-	case 5: //sortowanie 
-	case 6:
+		case 2:
+			productList.filteringSuppliers(chosenCountry);
+			break;
+		case 3:
+			chosenCategory = "fresh";
+			productList.filteringCategory(chosenCategory);
+			break;
 
-	case 7:
-	case 8:
-	case 9:
+		case 4: //sortowanie
+		case 5: //sortowanie 
+		case 6:
+		case 7:
+		case 8:
+		case 9:
+			break;
+		}
 	}
+	
 }

@@ -8,6 +8,7 @@ class Item
     int ID;
     std::string name; 
     std::string description;
+    std::string category;
     double price;
     bool availability;
     std::string supplier;
@@ -30,6 +31,7 @@ public:
     int getID();
     std::string getName();
     std::string getDescription();
+    std::string getCategory();
     double getPrice();
     bool getAvailability();
     std::string getSupplier();

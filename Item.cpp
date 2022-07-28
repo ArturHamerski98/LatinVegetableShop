@@ -1,8 +1,6 @@
 #include "Item.h"
-#include<iostream>
 
-
-Item::Item(int ID, std::string name, std::string description, double price, bool availability, std::string supplier, std::string category){
+Item::Item(int ID, std::string name, std::string description, double price, bool availability, std::string supplier, std::string category) {
     this->ID = ID;
     this->name = name;
     this->description = description;
@@ -25,6 +23,10 @@ std::string Item::getName() {
 std::string Item::getDescription() {
     return description;
 }
+std::string Item::getCategory()
+{
+    return category;
+}
 double Item::getPrice() {
     return price;
 }
@@ -35,23 +37,3 @@ std::string Item::getSupplier() {
     return supplier;
 }
 
-std::string Item:: getCategory() {
-   return category;
-}
-
-//int Item::ranndomCategory() {
-
-  // srand(time(NULL));
-
-  // return static_cast<int>(rand() % 2 + 0);
-//}
-
-void Item::showProductCart() {
-
-    std::cout << name << std:: endl;
-    std::cout << description << std::endl;
-    std::cout << price << std::endl;
-    std::cout << availability << std::endl;
-    std::cout << supplier << std::endl;
-    std::cout << category << std::endl;
-}

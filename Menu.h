@@ -5,5 +5,5 @@
 class Menu {
 
 public:
-	void superMenu(); 
+	void superMenu();
 };

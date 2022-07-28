@@ -1,22 +1,16 @@
 #pragma once
-#include <list>
 #include <vector>
+#include "Item.h"
+#include <fstream>
 #include <string>
 #include <sstream>
-#include <iostream>
-#include <fstream>
-#include <algorithm>
-#include "Item.h"
 
 class ProductList
 {
 public:
 	std::list<Item> myList;
 	void readingDataFromCSVFile();
-	void filteringSuppliers(std::string choosenSupplier);
-	void filteringCategory(std::string choosenCategory);
+	std::vector<std::string> filteringSuppliers(std::string choosenSupplier);
+	std::vector<std::string> filteringCategory(std::string choosenCategory);
 	void displayProducts();
-	int ranndomCategory(); 
-	void sortingByName(int arr[], int l, int r);
-
 };

@@ -1,18 +1,14 @@
-#include <iostream>
 #include "Item.h"
 #include "ProductList.h"
+#include "Cart.h"
+#include "CheckOutAndPayment.h"
 #include "Menu.h"
-#include <fstream>
-#include <list>
-#include <vector>
-#include <string>
-#include <sstream>
+#include <time.h>
 
 int main() {
+   
+    Menu menu;
+    menu.superMenu();
 
-    
-    //Item mis(12, "dsada", "sadas", 232, true, "Spain",);
-    //mis.showProductCart();
-    
     return 0;
 }
