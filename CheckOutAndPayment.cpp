@@ -1,3 +1,4 @@
+#pragma once
 #include "CheckOutAndPayment.h"
 
 void CheckOutAndPayment::setName()
