@@ -1,7 +1,7 @@
 #pragma once
 #include "Cart.h"
 void Cart::addToCart(Item addedItem) {
-	shoppingList.push_back({ addedItem, 3 });
+	shoppingList.push_back({ addedItem, 1 });
 }
 
 void Cart::reviewCart() {

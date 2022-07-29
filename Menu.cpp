@@ -37,6 +37,7 @@ void Menu::superMenu() {
 			case 1:
 				std::cout << "xsadfasdfas";
 				productList.displayProducts();
+				system("pause");
 				break;
 
 			case 2:

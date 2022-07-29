@@ -7,7 +7,7 @@ void ProductList::readingDataFromCSVFile()
     std::vector < std::vector < std::string >> content;
     std::vector < std::string > row;
     std::string line, word;
-    std::fstream file("Items.csv", std::ios::in);
+    std::fstream file("C:\\Users\\xgrj78\\source\\repos\\ArturHamerski98\\LatinVegetableShop\\Items.csv", std::ios::in);
     if (file.is_open()) {
         while (getline(file, line)) {
             row.clear();
