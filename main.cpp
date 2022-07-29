@@ -1,3 +1,4 @@
+#pragma once
 #include "Item.h"
 #include "ProductList.h"
 #include "Cart.h"
@@ -6,7 +7,8 @@
 #include <time.h>
 
 int main() {
-   
+
+
     Menu menu;
     std::cout << "Welcome in our shop. Choose option:\n";
     menu.superMenu();

@@ -1,3 +1,4 @@
+#pragma once
 #include "ProductList.h"
 #include "CheckOutAndPayment.h"
 struct product {

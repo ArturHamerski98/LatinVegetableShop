@@ -1,3 +1,4 @@
+#pragma once
 #include "Item.h"
 
 Item::Item(int ID, std::string name, std::string description, double price, bool availability, std::string supplier, std::string category) {
