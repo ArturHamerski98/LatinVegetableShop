@@ -4,7 +4,7 @@
 class Item
 {
     int ID;
-    std::string name; 
+    std::string name;
     std::string description;
     std::string category;
     double price;
