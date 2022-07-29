@@ -1,12 +1,30 @@
 #include "ProductList.h"
 
-
+void ProductList::quickSort(std::vector<double>& arr, double l, double r) {
+    if (l < r) {
+        double pivot = l;
+        double i = l;
+        double j = r;
+        while (i < j) {
+            while (arr[i] <= arr[pivot] && i < r)
+                i++;
+            while (arr[j] > arr[pivot])
+                j--;
+            if (i < j) {
+                std::swap(arr[i], arr[j]);
+            }
+        }
+        std::swap(arr[pivot], arr[j]);
+        quickSort(arr, l, j - 1);
+        quickSort(arr, j + 1, r);
+    }
+}
 void ProductList::readingDataFromCSVFile()
 {
     std::vector < std::vector < std::string >> content;
     std::vector < std::string > row;
     std::string line, word;
-    std::fstream file("Items.csv", std::ios::in);
+    std::fstream file("C:\\Users\\xgrj78\\source\\repos\\ArturHamerski98\\LatinVegetableShop\\Items.csv", std::ios::in);
     if (file.is_open()) {
         while (getline(file, line)) {
             row.clear();
@@ -51,16 +69,21 @@ void ProductList::readingDataFromCSVFile()
 
 }
 
-std::vector<std::string> ProductList::filteringSuppliers(std::string chosenSupplier)
+std::vector<Item> ProductList::filteringSuppliers(std::string chosenSupplier)
 {
-    std::vector <std::string> supplierVector;
-
-  
-
+    std::vector <Item> supplierVector;
+    std::vector<double> supplierPrices;
+    for (auto i : myList) {
+        supplierPrices.push_back(i.getPrice());
+    }
+    double n = supplierPrices.size() - 1;
+    quickSort(supplierPrices, 0, n);
+    int i = 0;
     for (auto item = myList.begin(); item != myList.end(); item++) {
+        
         if (item->getSupplier() == chosenSupplier)
-            std::cout << item->getSupplier() << "||" << item->getName() << "||" << item->getPrice() << "\n";
-            int x = 5;
+            std::cout << item->getSupplier() << "||" << item->getName() << "||" << supplierPrices[i] << "\n";
+        i++;
     }
 
     //COUT SUPLIERvector

@@ -27,7 +27,6 @@ void Menu::superMenu() {
 		switch (choice) {
 
 		case 1:
-			std::cout << "xsadfasdfas";
 			productList.displayProducts();
 			break;
 

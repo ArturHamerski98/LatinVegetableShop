@@ -74,3 +74,17 @@ void Cart::userInteraction() {
 		break;
 	}
 }
+void Cart::saveData() {
+	std::ofstream outputFile("outputFile.csv");
+	std::list<product>::iterator itr;
+	for (itr = shoppingList.begin(); itr != shoppingList.end(); itr++) {
+		outputFile << itr->item.getID(); outputFile << "\n";
+		outputFile << itr->item.getName(); outputFile << "\n";
+		outputFile << itr->item.getDescription(); outputFile << "\n";
+		outputFile << itr->item.getPrice(); outputFile << "\n";
+		outputFile << itr->item.getAvailability(); outputFile << "\n";
+		outputFile << itr->item.getSupplier(); outputFile << "\n";
+		outputFile << itr->item.getCategory(); outputFile << "\n";
+	}
+	outputFile.close();
+}

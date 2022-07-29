@@ -6,9 +6,10 @@
 #include <time.h>
 
 int main() {
-   
-    Menu menu;
-    menu.superMenu();
+
+    ProductList productList;
+    productList.readingDataFromCSVFile();
+    productList.filteringSuppliers();
 
     return 0;
 }
