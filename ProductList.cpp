@@ -113,12 +113,15 @@ std::vector<Item> ProductList::filteringCategory()
     if (chosenCategory == "3")
         chosenCategory = "at your own risk";
 
+    int temp = 0;
+
 
     for (auto item = myList.begin(); item != myList.end(); item++) {
         if (chosenCategory == (item->getCategory()))
         {
-            std::cout << item->getID() << "||" << item->getName() << "||" << item->getCategory() << "$||" << std::endl;
+            std::cout << temp << "||" << item->getName() << "||" << item->getPrice() << "$" << std::endl;
             categoryVector1.push_back(*item);
+            temp++;
         }
             
     }
@@ -129,7 +132,7 @@ void ProductList::displayProducts()
 {
     for (auto item = myList.begin(); item != myList.end(); item++) {
 
-        std::cout << item->getID() << "||" << item->getName() << "||" << item->getCategory() << "$||" << std::endl;
+        std::cout << item->getID() << "||" << item->getName() << "||" << item->getPrice() << "$||" << std::endl;
     }
 
 }
