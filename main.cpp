@@ -9,7 +9,7 @@ int main() {
 
     ProductList productList;
     productList.readingDataFromCSVFile();
-    productList.filteringSuppliers();
+    productList.filteringSuppliers("Poland");
 
     return 0;
 }

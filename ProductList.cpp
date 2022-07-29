@@ -1,14 +1,14 @@
 #include "ProductList.h"
 
-void ProductList::quickSort(std::vector<double>& arr, double l, double r) {
+void ProductList::quickSort(std::vector<Item>& arr, int l, int r) {
     if (l < r) {
-        double pivot = l;
-        double i = l;
-        double j = r;
+        int pivot = l;
+        int i = l;
+        int j = r;
         while (i < j) {
-            while (arr[i] <= arr[pivot] && i < r)
+            while (arr[i].getPrice() <= arr[pivot].getPrice() && i < r)
                 i++;
-            while (arr[j] > arr[pivot])
+            while (arr[j].getPrice() > arr[pivot].getPrice())
                 j--;
             if (i < j) {
                 std::swap(arr[i], arr[j]);
@@ -69,28 +69,46 @@ void ProductList::readingDataFromCSVFile()
 
 }
 
-std::vector<Item> ProductList::filteringSuppliers(std::string chosenSupplier)
+std::vector<Item> ProductList::filteringSuppliers(std::string choosenSupplier)
 {
     std::vector <Item> supplierVector;
-    std::vector<double> supplierPrices;
-    for (auto i : myList) {
-        supplierPrices.push_back(i.getPrice());
-    }
-    double n = supplierPrices.size() - 1;
-    quickSort(supplierPrices, 0, n);
-    int i = 0;
-    for (auto item = myList.begin(); item != myList.end(); item++) {
-        
-        if (item->getSupplier() == chosenSupplier)
-            std::cout << item->getSupplier() << "||" << item->getName() << "||" << supplierPrices[i] << "\n";
-        i++;
+    std::string chosenSupplier{};
+
+    while (chosenSupplier != "1" && chosenSupplier != "2" && chosenSupplier != "3") {
+        std::cout << "Type number to choose supplier to filter:\n";
+        std::cout << "1. Spain \n";
+        std::cout << "2. Poland\n";
+        std::cout << "3. France\n";
+
+        std::cin >> chosenSupplier;
     }
 
-    //COUT SUPLIERvector
+    if (chosenSupplier == "1")
+        chosenSupplier = "Spain";
+
+    if (chosenSupplier == "2")
+        chosenSupplier = "Poland";
+
+    if (chosenSupplier == "3")
+        chosenSupplier = "France";
+
+    for(auto item = myList.begin(); item != myList.end(); item++) {
+            supplierVector.push_back(*item);           
+    }
+
+    int temp2 = 0;
+    quickSortbyName(supplierVector, 0, supplierVector.size() - 1);
+    for (auto i : supplierVector) {
+        if (i.getSupplier() == chosenSupplier)
+        {
+            std::cout << i.getSupplier() << " " << i.getName() << " " << i.getPrice()<<"\n";
+        }
+            
+    }
+
     return supplierVector;
-    
-}
 
+}
 std::vector<std::string> ProductList::filteringCategory(std::string chosenCategory)
 {
     std::vector <std::string> categoryVector1;
@@ -103,6 +121,28 @@ std::vector<std::string> ProductList::filteringCategory(std::string chosenCatego
     
     
     return categoryVector1;
+}
+
+void ProductList::quickSortbyName(std::vector<Item>& arr, int l, int r)
+{
+    if (l < r) {
+        int pivot = l;
+        int i = l;
+        int j = r;
+        while (i < j) {
+            while (arr[i].getName() <= arr[pivot].getName() && i < r)
+                i++;
+            while (arr[j].getName() > arr[pivot].getName())
+                j--;
+            if (i < j) {
+                std::swap(arr[i], arr[j]);
+            }
+        }
+        std::swap(arr[pivot], arr[j]);
+        quickSortbyName(arr, l, j - 1);
+        quickSortbyName(arr, j + 1, r);
+    }
+
 }
 
 void ProductList::displayProducts()
