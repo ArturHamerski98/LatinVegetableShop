@@ -12,7 +12,7 @@ Item::Item(int ID, std::string name, std::string description, double price, bool
     prodCart.name = name;
     prodCart.description = description;
     prodCart.price = price;
-    prodCart.availability = availability;
+   // prodCart.availability = availability;
     prodCart.supplier = supplier;
 }
 int Item::getID() {
@@ -36,5 +36,15 @@ bool Item::getAvailability() {
 }
 std::string Item::getSupplier() {
     return supplier;
+}
+
+void Item::showDetails() {
+    std::cout << "Name: " << name << std::endl;
+    std::cout << "Description: " << description << std::endl;
+    std::cout << "Price: " << price << std::endl;
+    //std::cout << availability << std::endl;
+    std::cout << "Supplier: " << supplier << std::endl;
+    std::cout << "Category: " << category << std::endl;
+
 }
 

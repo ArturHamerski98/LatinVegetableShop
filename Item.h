@@ -4,7 +4,7 @@
 class Item
 {
     int ID;
-    std::string name; 
+    std::string name;
     std::string description;
     std::string category;
     double price;
@@ -14,7 +14,7 @@ class Item
         std::string name;
         std::string description;
         double price;
-        bool availability;
+        //bool availability;
         std::string supplier;
     };
     productCart prodCart;
@@ -27,4 +27,6 @@ public:
     double getPrice();
     bool getAvailability();
     std::string getSupplier();
+    void showDetails();
+
 };

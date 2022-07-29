@@ -16,15 +16,19 @@ void Menu::superMenu() {
 		if (temp != 0)
 			system("cls");
 		temp++;
+
 		std::cout << "\n 1. Review all products\n";
 		std::cout << " 2. Filter by supplier\n";
 		std::cout << " 3. Filter by category\n";
 		std::cout << " 4. Sorting products by name\n";
 		std::cout << " 5. Sorting products by price\n";
-		std::cout << " 6. Show details of choosen product\n";
-		std::cout << " 7. Go to cart\n";
-		std::cout << " 8. Order confirmation\n";
-		std::cout << " 9. Admin panel\n";
+		std::cout << " 6. Go to cart\n";
+		std::cout << " 7. Order confirmation\n";
+		std::cout << " 8. Admin panel\n";
+
+
+
+
 
 		std::cout << "Your choice:";
 		std::cin >> choice;
@@ -35,7 +39,6 @@ void Menu::superMenu() {
 			switch (choice) {
 
 			case 1:
-				std::cout << "xsadfasdfas";
 				productList.displayProducts();
 				system("pause");
 				break;
@@ -51,8 +54,10 @@ void Menu::superMenu() {
 			case 4: //sortowanie
 			case 5: //sortowanie 
 			case 6:
-			case 7:
 				cart.userInteraction();
+				break;
+			case 7:
+				
 			case 8:
 			case 9:
 				break;
@@ -80,7 +85,8 @@ void Menu:: askAfterFiltering(std::vector<Item> Victorek) {
 		std::cout << "1. Add product to cart\n";
 		std::cout << "2. Sorting products by name\n";
 		std::cout << "3. Sorting products by price\n";
-		std::cout << "4. Back to MENU\n";
+		std::cout << "4. Show details of products\n";
+		std::cout << "5. Back to MENU\n";
 
 		int choice{};
 		std::cin >> choice;
@@ -97,17 +103,25 @@ void Menu:: askAfterFiltering(std::vector<Item> Victorek) {
 			productList.quickSortbyName(Victorek, 0, Victorek.size() - 1);
 			for (int i = 0; i < Victorek.size(); i++)
 			{
-				std::cout << Victorek[i].getName() << std::endl;
+				std::cout << i << "||" << Victorek[i].getName() << "||" << Victorek[i].getPrice() << "$" << std::endl;
 			}
 			break;
 		case 3:
 			productList.quickSortbyPrice(Victorek, 0, Victorek.size() - 1);
 			for (int i = 0; i < Victorek.size(); i++)
 			{
-				std::cout << Victorek[i].getPrice() << std::endl;
+				std::cout << i << "||" << Victorek[i].getName() << "||" << Victorek[i].getPrice() << "$" << std::endl;
 			}
 			break;
+
 		case 4:
+			int itemNumber2;
+			std::cout << "Choose product number:";
+			std::cin >> itemNumber2;
+			Victorek[itemNumber2].showDetails();
+			system("pause");
+
+		case 5:
 			temp1 = false;
 			break;
 		}

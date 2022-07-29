@@ -1,5 +1,6 @@
 #pragma once
 #include "Cart.h"
+#include <string>
 void Cart::addToCart(Item addedItem) {
 	shoppingList.push_back({ addedItem, 1 });
 }
@@ -36,8 +37,11 @@ void Cart::setQuantity(int position, int quantity) {
 		}
 	}
 }
+
 void Cart::userInteraction() {
 	bool temp = true;
+	CheckOutAndPayment myCOAP;
+	std::string boughtItems="";
 	while (temp)
 	{
 		reviewCart();
@@ -49,7 +53,7 @@ void Cart::userInteraction() {
 		int choice;
 		std::cin >> choice;
 		int position;
-		CheckOutAndPayment myCOAP(totalPrice);
+		
 		switch (choice) {
 		case 1:
 			temp = false;
@@ -61,9 +65,14 @@ void Cart::userInteraction() {
 			deleteItemFromCart(position);
 			break;
 		case 3:
-			std::cout << "Enter the position of the product you want to display info:\n";
-
+			for (auto item = shoppingList.begin(); item != shoppingList.end(); item++) {
+				boughtItems+= std::to_string(item->item.getID());
+				boughtItems += ",";
+			}
+			myCOAP.setTotalPrice(totalPrice);
+			myCOAP.setBoughtItems(boughtItems);
 			myCOAP.checkOut();
+			
 			break;
 		case 4:
 			std::cout << "Enter the position of the product:";

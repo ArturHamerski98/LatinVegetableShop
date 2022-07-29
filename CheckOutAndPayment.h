@@ -3,16 +3,16 @@
 class CheckOutAndPayment
 {
 	
-	double price;
+	double totalPrice;
 	std::string name;
 	std::string eMail;
 	std::string phoneNumber;
 	std::string billingAdress;
 	std::string shippingAdress;
+	std::string boughtItems;
 public:
-	CheckOutAndPayment(double price)
+	CheckOutAndPayment()
 	{
-		this->price = price;
 		name = "";
 		eMail = "";
 		phoneNumber = "000000000";
@@ -25,5 +25,9 @@ public:
 	void setBillingAdress();
 	void setShipingAdress();
 	void checkOut();
+	void saveData();
+	void setBoughtItems(std::string items);
+	void setTotalPrice(double tp);
+
 };
 
