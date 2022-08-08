@@ -48,7 +48,7 @@ void Cart::userInteraction() {
 		std::cout << "\nHello! Press a digit corresponding to the action you want to take:\n";
 		std::cout << "1: Back to shoping\n";
 		std::cout << "2: delete an element from you shopping list\n";
-		std::cout << "3: review the whole shopping list\n";
+		std::cout << "3: go to confirmation\n";
 		std::cout << "4: change the quantity of one of the products\n";
 		int choice;
 		std::cin >> choice;

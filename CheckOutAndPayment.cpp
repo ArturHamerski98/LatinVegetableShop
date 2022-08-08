@@ -45,7 +45,7 @@ void CheckOutAndPayment::checkOut()
 void CheckOutAndPayment::saveData()
 {
 	std::ofstream outputData("outputData.csv",std::ios::app);
-	outputData << name << ";" << billingAdress << ";" << boughtItems << "\n";
+	outputData << name << ";" << totalPrice << ";" << boughtItems << "\n";
 	outputData.close();
 }
 

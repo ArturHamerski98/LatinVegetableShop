@@ -8,7 +8,7 @@ void Menu::superMenu() {
 
 	int choice = 0;
 	productList.readingDataFromCSVFile();
-
+	std::vector <Item> vectorofAll;
 	int temp = 0;
 	while (true)
 	{
@@ -40,7 +40,12 @@ void Menu::superMenu() {
 
 			case 1:
 				productList.displayProducts();
-				system("pause");
+				for (auto item = productList.myList.begin(); item != productList.myList.end(); item++) {
+
+					vectorofAll.push_back(*item);
+				}
+				
+				askAfterFiltering(vectorofAll);
 				break;
 
 			case 2:

@@ -132,7 +132,7 @@ void ProductList::displayProducts()
 {
     for (auto item = myList.begin(); item != myList.end(); item++) {
 
-        std::cout << item->getID() << "||" << item->getName() << "||" << item->getPrice() << "$||" << std::endl;
+        std::cout << item->getID()-1 << "||" << item->getName() << "||" << item->getPrice() << "$||" << std::endl;
     }
 
 }
