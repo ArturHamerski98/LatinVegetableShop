@@ -96,7 +96,7 @@ void Menu:: askAfterFiltering(std::vector<Item> Victorek) {
 		int choice{};
 		std::cin >> choice;
 
-
+		
 		switch (choice) {
 
 		case 1:
@@ -104,6 +104,7 @@ void Menu:: askAfterFiltering(std::vector<Item> Victorek) {
 			std::cout << "Choose product number:";
 			std::cin >> itemNumber;
 			cart.addToCart(Victorek[itemNumber]);
+			break;
 		case 2:
 			productList.quickSortbyName(Victorek, 0, Victorek.size() - 1);
 			for (int i = 0; i < Victorek.size(); i++)
@@ -125,12 +126,10 @@ void Menu:: askAfterFiltering(std::vector<Item> Victorek) {
 			std::cin >> itemNumber2;
 			Victorek[itemNumber2].showDetails();
 			system("pause");
-
+			break;
 		case 5:
 			temp1 = false;
 			break;
 		}
-
 	}
-	
 }

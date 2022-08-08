@@ -17,5 +17,4 @@ public:
 	void quickSortbyName(std::vector<Item>& arr, int l, int r);
 	void quickSortbyPrice(std::vector<Item>& arr, int l, int r);
 	Item getItem(int ID);
-	
 };
