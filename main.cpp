@@ -8,7 +8,7 @@
 
 int main() {
 
-
+    system("Color 30");
     Menu menu;
     std::cout << "Welcome in our shop. Choose option:\n";
     menu.superMenu();
