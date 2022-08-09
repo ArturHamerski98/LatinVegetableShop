@@ -9,6 +9,6 @@ public:
 	Cart cart;
 public:
 	void superMenu();
-	void askAfterFiltering(std::vector<Item>);
+	void askAfterFiltering(std::vector<Item*>);
 	Menu();
 };

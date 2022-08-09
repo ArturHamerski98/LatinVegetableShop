@@ -8,7 +8,8 @@ void Menu::superMenu() {
 
 	int choice = 0;
 	productList.readingDataFromCSVFile();
-	std::vector <Item> vectorofAll;
+	
+	
 	int temp = 0;
 	while (true)
 	{
@@ -39,21 +40,19 @@ void Menu::superMenu() {
 			switch (choice) {
 
 			case 1:
-				productList.displayProducts();
-				for (auto item = productList.myList.begin(); item != productList.myList.end(); item++) {
 
-					vectorofAll.push_back(*item);
-				}
+				productList.displayProducts(productList.vectorofAll);
 				
-				askAfterFiltering(vectorofAll);
+				
+				askAfterFiltering(productList.vectorofAll);
 				break;
 
 			case 2:
-				askAfterFiltering(productList.filteringSuppliers());
+				askAfterFiltering(productList.filteringSuppliers(productList.vectorofAll));
 
 				break;
 			case 3:
-				askAfterFiltering(productList.filteringCategory());
+				askAfterFiltering(productList.filteringCategory(productList.vectorofAll));
 				break;
 
 			case 4: //sortowanie
@@ -81,7 +80,7 @@ Menu::Menu()
 	cart = Cart();
 }
 
-void Menu:: askAfterFiltering(std::vector<Item> Victorek) {
+void Menu:: askAfterFiltering(std::vector<Item*> Victorek) {
 
 	bool temp1 = true;
 	while (temp1)
@@ -109,14 +108,14 @@ void Menu:: askAfterFiltering(std::vector<Item> Victorek) {
 			productList.quickSortbyName(Victorek, 0, Victorek.size() - 1);
 			for (int i = 0; i < Victorek.size(); i++)
 			{
-				std::cout << i << "||" << Victorek[i].getName() << "||" << Victorek[i].getPrice() << "$" << std::endl;
+				std::cout << i << "||" << Victorek[i]->getName() << "||" << Victorek[i]->getPrice() << "$" << std::endl;
 			}
 			break;
 		case 3:
 			productList.quickSortbyPrice(Victorek, 0, Victorek.size() - 1);
 			for (int i = 0; i < Victorek.size(); i++)
 			{
-				std::cout << i << "||" << Victorek[i].getName() << "||" << Victorek[i].getPrice() << "$" << std::endl;
+				std::cout << i << "||" << Victorek[i]->getName() << "||" << Victorek[i]->getPrice() << "$" << std::endl;
 			}
 			break;
 
@@ -124,7 +123,7 @@ void Menu:: askAfterFiltering(std::vector<Item> Victorek) {
 			int itemNumber2;
 			std::cout << "Choose product number:";
 			std::cin >> itemNumber2;
-			Victorek[itemNumber2].showDetails();
+			Victorek[itemNumber2]->showDetails();
 			system("pause");
 			break;
 		case 5:

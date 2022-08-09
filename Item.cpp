@@ -1,7 +1,7 @@
 #pragma once
 #include "Item.h"
 
-Item::Item(int ID, std::string name, std::string description, double price, bool availability, std::string supplier, std::string category) {
+Item::Item(int ID, std::string name, std::string description, double price, bool availability, std::string supplier, std::string category,int quantity) {
     this->ID = ID;
     this->name = name;
     this->description = description;
@@ -9,6 +9,7 @@ Item::Item(int ID, std::string name, std::string description, double price, bool
     this->availability = availability;
     this->supplier = supplier;
     this->category = category;
+    this->quantity = quantity;
     prodCart.name = name;
     prodCart.description = description;
     prodCart.price = price;
@@ -46,5 +47,15 @@ void Item::showDetails() {
     std::cout << "Supplier: " << supplier << std::endl;
     std::cout << "Category: " << category << std::endl;
 
+}
+
+void Item::setQuantity(int value)
+{
+    quantity = value;
+}
+
+int Item::getQuantity()
+{
+    return quantity;
 }
 

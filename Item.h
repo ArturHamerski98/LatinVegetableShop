@@ -3,6 +3,7 @@
 #include<list>
 class Item
 {
+
     int ID;
     std::string name;
     std::string description;
@@ -10,6 +11,7 @@ class Item
     double price;
     bool availability;
     std::string supplier;
+    int quantity;
     struct productCart {
         std::string name;
         std::string description;
@@ -19,7 +21,7 @@ class Item
     };
     productCart prodCart;
 public:
-    Item(int ID, std::string name, std::string description, double price, bool availability, std::string supplier, std::string category);
+    Item(int ID, std::string name, std::string description, double price, bool availability, std::string supplier, std::string category, int quantity);
     int getID();
     std::string getName();
     std::string getDescription();
@@ -28,5 +30,7 @@ public:
     bool getAvailability();
     std::string getSupplier();
     void showDetails();
+    void setQuantity(int value);
+    int getQuantity();
 
 };

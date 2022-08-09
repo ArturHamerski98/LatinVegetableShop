@@ -8,13 +8,13 @@
 class ProductList
 {
 public:
-	std::list<Item> myList;
+	std::vector <Item*> vectorofAll;
 	void readingDataFromCSVFile();
-	std::vector<Item> filteringSuppliers();
-	std::vector<Item> filteringCategory();
-	void displayProducts();
+	std::vector<Item*> filteringSuppliers(std::vector<Item*>& arr);
+	std::vector<Item*> filteringCategory(std::vector<Item*>& arr);
+	void displayProducts(std::vector<Item*>& arr);
 	void askAfterFiltering();
-	void quickSortbyName(std::vector<Item>& arr, int l, int r);
-	void quickSortbyPrice(std::vector<Item>& arr, int l, int r);
+	void quickSortbyName(std::vector<Item*>& arr, int l, int r);
+	void quickSortbyPrice(std::vector<Item*>& arr, int l, int r);
 	Item getItem(int ID);
 };
