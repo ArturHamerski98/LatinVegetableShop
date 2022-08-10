@@ -15,7 +15,4 @@ public:
 	void setQuantity(int position, int quantity);
 	void userInteraction();
 	
-	
-	
-	
 };

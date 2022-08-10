@@ -1,5 +1,7 @@
 #pragma once
 #include<iostream>
+#include <time.h>
+#include <fstream>
 class CheckOutAndPayment
 {
 	
@@ -28,6 +30,7 @@ public:
 	void saveData();
 	void setBoughtItems(std::string items);
 	void setTotalPrice(double tp);
+	void orderConfirmation();
 
 };
 

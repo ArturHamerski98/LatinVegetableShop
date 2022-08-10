@@ -7,7 +7,7 @@ void ProductList::readingDataFromCSVFile()
     std::vector < std::vector < std::string >> content;
     std::vector < std::string > row;
     std::string line, word;
-    std::fstream file("C:\\Users\\xgrj78\\source\\repos\\ArturHamerski98\\LatinVegetableShop\\Items.csv", std::ios::in);
+    std::fstream file("Items.csv", std::ios::in);
     if (file.is_open()) {
         while (getline(file, line)) {
             row.clear();
@@ -122,8 +122,7 @@ std::vector<Item> ProductList::filteringCategory()
             std::cout << temp << "||" << item->getName() << "||" << item->getPrice() << "$" << std::endl;
             categoryVector1.push_back(*item);
             temp++;
-        }
-            
+        }  
     }
     return categoryVector1;
 }
@@ -134,10 +133,9 @@ void ProductList::displayProducts()
 
         std::cout << item->getID()-1 << "||" << item->getName() << "||" << item->getPrice() << "$||" << std::endl;
     }
-
 }
 
-void ProductList::quickSortbyName(std::vector<Item>& arr, int l, int r)
+void ProductList::quickSortbyNameAscending(std::vector<Item>& arr, int l, int r) // a-z
 {
     if (l < r) {
         int pivot = l;
@@ -153,13 +151,63 @@ void ProductList::quickSortbyName(std::vector<Item>& arr, int l, int r)
             }
         }
         std::swap(arr[pivot], arr[j]);
-        quickSortbyName(arr, l, j - 1);
-        quickSortbyName(arr, j + 1, r);
+        quickSortbyNameAscending(arr, l, j - 1);
+        quickSortbyNameAscending(arr, j + 1, r);
     }
-
 }
 
-void ProductList::quickSortbyPrice(std::vector<Item>& arr, int l, int r)
+//void ProductList::quickSortbyNameDescending(std::vector<Item>& arr, int l, int r) // z-a
+//{
+//    int i = l;
+//    int j = r;
+//    int temp = i;
+//
+//    if (l < r)
+//    {
+//        while (i < j)
+//        {
+//            while (arr[j].getName() <= arr[temp].getName() && i < j)
+//            {
+//                j--;
+//            }
+//            arr[i] = arr[j];
+//
+//            while (arr[i].getName() >= arr[temp].getName() && i < j)
+//            {
+//                i++;
+//            }
+//            arr[j] = arr[i];
+//        }
+//        arr[i].getName() = arr[temp].getName();
+//
+//        quickSortbyNameDescending(arr, l, i - 1);
+//        quickSortbyNameDescending(arr, j + 1, r);
+//    }
+//}
+
+void ProductList::quickSortbyNameDescending(std::vector<Item>& arr, int l, int r) // z-a
+{
+    if (l < r) {
+        int pivot = l;
+        int i = l;
+        int j = r;
+        while (i < j) {
+            while (arr[i].getName() >= arr[pivot].getName() && i < r)
+                i++;
+            while (arr[j].getName() < arr[pivot].getName())
+                j--;
+            if (i < j) {
+                std::swap(arr[i], arr[j]);
+            }
+        }
+        std::swap(arr[pivot], arr[j]);
+        quickSortbyNameDescending(arr, l, j - 1);
+        quickSortbyNameDescending(arr, j + 1, r);
+    }
+}
+
+
+void ProductList::quickSortbyPriceAscending(std::vector<Item>& arr, int l, int r)
 {
     if (l < r) {
         int pivot = l;
@@ -175,7 +223,28 @@ void ProductList::quickSortbyPrice(std::vector<Item>& arr, int l, int r)
             }
         }
         std::swap(arr[pivot], arr[j]);
-        quickSortbyPrice(arr, l, j - 1);
-        quickSortbyPrice(arr, j + 1, r);
+        quickSortbyPriceAscending(arr, l, j - 1);
+        quickSortbyPriceAscending(arr, j + 1, r);
+    }
+}
+
+void ProductList::quickSortbyPriceDescending(std::vector<Item>& arr, int l, int r) {
+
+    if (l < r) {
+        int pivot = l;
+        int i = l;
+        int j = r;
+        while (i < j) {
+            while (arr[i].getPrice() >= arr[pivot].getPrice() && i < r)
+                i++;
+            while (arr[j].getPrice() < arr[pivot].getPrice())
+                j--;
+            if (i < j) {
+                std::swap(arr[i], arr[j]);
+            }
+        }
+        std::swap(arr[pivot], arr[j]);
+        quickSortbyPriceDescending(arr, l, j - 1);
+        quickSortbyPriceDescending(arr, j + 1, r);
     }
 }

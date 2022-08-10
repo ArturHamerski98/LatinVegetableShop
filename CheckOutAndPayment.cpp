@@ -1,6 +1,7 @@
 #pragma once
 #include "CheckOutAndPayment.h"
-#include <fstream>
+
+
 
 void CheckOutAndPayment::setName()
 {
@@ -44,8 +45,8 @@ void CheckOutAndPayment::checkOut()
 
 void CheckOutAndPayment::saveData()
 {
-	std::ofstream outputData("outputData.csv",std::ios::app);
-	outputData << name << ";" << totalPrice << ";" << boughtItems << "\n";
+	std::ofstream outputData("outputData.csv");
+	outputData << name << ";" << totalPrice << ";" << boughtItems << "\n"; 
 	outputData.close();
 }
 
@@ -57,4 +58,17 @@ void CheckOutAndPayment::setBoughtItems(std::string items)
 void CheckOutAndPayment::setTotalPrice(double tp)
 {
 	totalPrice = tp;
+}
+
+void CheckOutAndPayment::orderConfirmation() {
+	std::string fileName;
+	std::cout << "give file name ";
+	std::cin >> fileName;
+	fileName += ".csv";
+	ofstream zapis(fileName);
+
+	zapis << a << " + " << b << " = " << a + b;
+
+	zapis.close();
+	
 }

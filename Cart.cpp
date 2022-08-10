@@ -26,7 +26,6 @@ void Cart::deleteItemFromCart(int position) {
 			break;
 		}
 	}
-	
 }
 void Cart::setQuantity(int position, int quantity) {
 	int temp = 0;
@@ -83,10 +82,5 @@ void Cart::userInteraction() {
 			setQuantity(position, quantity);
 			break;
 		}
-
-
-
-
 	}
-	
 }
