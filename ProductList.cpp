@@ -1,7 +1,6 @@
 #pragma once
 #include "ProductList.h"
 
-
 void ProductList::readingDataFromCSVFile()
 {
     std::vector < std::vector < std::string >> content;
@@ -69,7 +68,8 @@ std::vector<Item*> ProductList::filteringSuppliers(std::vector<Item*>& arr)
     {
         if (arr[i]->getSupplier() == chosenSupplier)
         {
-            std::cout << temp2 << " " << arr[i]->getSupplier() << "||" << arr[i]->getName() << "||" << arr[i]->getPrice() << "\n";
+            //std::cout << temp2 << " " << arr[i]->getSupplier() << "||" << arr[i]->getName() << "||" << arr[i]->getPrice() << "\n";
+            std::cout << proText(std::to_string(temp2), 3) << " " << proText(arr[i]->getSupplier(), 10) << "||" << proText(arr[i]->getName(), 34) << "||" << proText(std::to_string(arr[i]->getPrice()), 10) << "\n";
             supplierVector.push_back(arr[i]);
             temp2++;
         }
@@ -107,11 +107,10 @@ std::vector<Item*> ProductList::filteringCategory(std::vector<Item*>& arr)
 
     int temp = 0;
 
-
   
     for (int i = 0; i < arr.size(); i++)
     {
-        if (arr[i]->getSupplier() == chosenCategory)
+        if (arr[i]->getCategory() == chosenCategory)
         {
             std::cout << temp << " " << arr[i]->getSupplier() << "||" << arr[i]->getName() << "||" << arr[i]->getPrice() << "\n";
             categoryVector1.push_back(arr[i]);
@@ -126,7 +125,7 @@ std::vector<Item*> ProductList::filteringCategory(std::vector<Item*>& arr)
 void ProductList::displayProducts(std::vector<Item*>& arr)
 {
     for(int i =0;i<arr.size();i++)
-        std::cout << arr[i]->getID() - 1 << "||" << arr[i]->getName() << "||" << arr[i]->getPrice() << "$||" << arr[i]->getQuantity() << std::endl;
+        std::cout << proText(std::to_string(i), 4) << "||" << proText(arr[i]->getName(), 34) << "||" << proText(std::to_string(arr[i]->getPrice()), 10) << "$||" << arr[i]->getQuantity() << std::endl;
 
 }
 
@@ -170,5 +169,134 @@ void ProductList::quickSortbyPrice(std::vector<Item*>& arr, int l, int r)
         std::swap(arr[pivot], arr[j]);
         quickSortbyPrice(arr, l, j - 1);
         quickSortbyPrice(arr, j + 1, r);
+    }
+}
+
+std::string ProductList::proText(std::string a, int margin)
+{
+    std::string beautifulText = a;
+    if (a.size() > margin) std::cout << "text size Error";
+    else
+    {
+        for (int i = 0; i < (margin - (a.size())); i++)
+        {
+            beautifulText += " ";
+        }
+    }
+    return beautifulText;
+}
+void ProductList::quickSortbyNameAscending(std::vector<Item*>& arr, int l, int r) // a-z
+{
+    if (l < r) {
+        int pivot = l;
+        int i = l;
+        int j = r;
+        while (i < j) {
+            while (arr[i]->getName() <= arr[pivot]->getName() && i < r)
+                i++;
+            while (arr[j]->getName() > arr[pivot]->getName())
+                j--;
+            if (i < j) {
+                std::swap(arr[i], arr[j]);
+            }
+        }
+        std::swap(arr[pivot], arr[j]);
+        quickSortbyNameAscending(arr, l, j - 1);
+        quickSortbyNameAscending(arr, j + 1, r);
+    }
+    
+    
+}
+
+//void ProductList::quickSortbyNameDescending(std::vector<Item>& arr, int l, int r) // z-a
+//{
+//    int i = l;
+//    int j = r;
+//    int temp = i;
+//
+//    if (l < r)
+//    {
+//        while (i < j)
+//        {
+//            while (arr[j].getName() <= arr[temp].getName() && i < j)
+//            {
+//                j--;
+//            }
+//            arr[i] = arr[j];
+//
+//            while (arr[i].getName() >= arr[temp].getName() && i < j)
+//            {
+//                i++;
+//            }
+//            arr[j] = arr[i];
+//        }
+//        arr[i].getName() = arr[temp].getName();
+//
+//        quickSortbyNameDescending(arr, l, i - 1);
+//        quickSortbyNameDescending(arr, j + 1, r);
+//    }
+//}
+
+void ProductList::quickSortbyNameDescending(std::vector<Item*>& arr, int l, int r) // z-a
+{
+    if (l < r) {
+        int pivot = l;
+        int i = l;
+        int j = r;
+        while (i < j) {
+            while (arr[i]->getName() >= arr[pivot]->getName() && i < r)
+                i++;
+            while (arr[j]->getName() < arr[pivot]->getName())
+                j--;
+            if (i < j) {
+                std::swap(arr[i], arr[j]);
+            }
+        }
+        std::swap(arr[pivot], arr[j]);
+        quickSortbyNameDescending(arr, l, j - 1);
+        quickSortbyNameDescending(arr, j + 1, r);
+    }
+}
+
+
+void ProductList::quickSortbyPriceAscending(std::vector<Item*>& arr, int l, int r)
+{
+    if (l < r) {
+        int pivot = l;
+        int i = l;
+        int j = r;
+        while (i < j) {
+            while (arr[i]->getPrice() <= arr[pivot]->getPrice() && i < r)
+                i++;
+            while (arr[j]->getPrice() > arr[pivot]->getPrice())
+                j--;
+            if (i < j) {
+                std::swap(arr[i], arr[j]);
+            }
+        }
+        std::swap(arr[pivot], arr[j]);
+        quickSortbyPriceAscending(arr, l, j - 1);
+        quickSortbyPriceAscending(arr, j + 1, r);
+    }
+}
+
+void ProductList::quickSortbyPriceDescending(std::vector<Item*>& arr, int l, int r) {
+
+    if (l < r) {
+        int pivot = l;
+        int i = l;
+        int j = r;
+        while (i < j) {
+            while (arr[i]->getPrice() >= arr[pivot]->getPrice() && i < r)
+                i++;
+            while (arr[j]->getPrice() < arr[pivot]->getPrice())
+                j--;
+            if (i < j) {
+                std::swap(arr[i], arr[j]);
+            }
+        }
+        std::swap(arr[pivot], arr[j]);
+        quickSortbyPriceDescending(arr, l, j - 1);
+        quickSortbyPriceDescending(arr, j + 1, r);
     }
 }
