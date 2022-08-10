@@ -1,5 +1,6 @@
 #pragma once
 #include "ProductList.h"
+#include "Margin.h"
 
 
 void ProductList::readingDataFromCSVFile()
@@ -69,7 +70,7 @@ std::vector<Item*> ProductList::filteringSuppliers(std::vector<Item*>& arr)
     {
         if (arr[i]->getSupplier() == chosenSupplier)
         {
-            std::cout << temp2 << " " << arr[i]->getSupplier() << "||" << arr[i]->getName() << "||" << arr[i]->getPrice() << "\n";
+            std::cout << proText(std::to_string(temp2), 3) << " " << proText(arr[i]->getSupplier(), 10) << "||" << proText(arr[i]->getName(), 34) << "||" << proText(std::to_string(arr[i]->getPrice()), 10) << "\n";
             supplierVector.push_back(arr[i]);
             temp2++;
         }
@@ -113,7 +114,7 @@ std::vector<Item*> ProductList::filteringCategory(std::vector<Item*>& arr)
     {
         if (arr[i]->getSupplier() == chosenCategory)
         {
-            std::cout << temp << " " << arr[i]->getSupplier() << "||" << arr[i]->getName() << "||" << arr[i]->getPrice() << "\n";
+            std::cout << proText(std::to_string(temp),3) << "||" << proText(arr[i]->getSupplier(), 34) << "||" << proText(arr[i]->getName(), 14) << "||" << arr[i]->getPrice() << "\n";
             categoryVector1.push_back(arr[i]);
             temp++;
         }
@@ -126,7 +127,7 @@ std::vector<Item*> ProductList::filteringCategory(std::vector<Item*>& arr)
 void ProductList::displayProducts(std::vector<Item*>& arr)
 {
     for(int i =0;i<arr.size();i++)
-        std::cout << arr[i]->getID() - 1 << "||" << arr[i]->getName() << "||" << arr[i]->getPrice() << "$||" << arr[i]->getQuantity() << std::endl;
+        std::cout << proText(std::to_string(arr[i]->getID() - 1), 4) << "||" << proText(arr[i]->getName(), 34) << "||" << proText(std::to_string(arr[i]->getPrice()), 16) << "$||" << arr[i]->getQuantity() << std::endl;
 
 }
 

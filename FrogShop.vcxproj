@@ -133,10 +133,12 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Menu.cpp" />
     <ClCompile Include="ProductList.cpp" />
+    <ClCompile Include="Margin.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Cart.h" />
     <ClInclude Include="CheckOutAndPayment.h" />
+    <ClInclude Include="Margin.h" />
     <ClInclude Include="Item.h" />
     <ClInclude Include="Menu.h" />
     <ClInclude Include="ProductList.h" />

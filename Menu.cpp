@@ -1,6 +1,7 @@
 #pragma once
 #include "Menu.h"
-
+#include "Margin.h"
+#include <string>
 
 void Menu::superMenu() {
 
@@ -108,14 +109,14 @@ void Menu:: askAfterFiltering(std::vector<Item*> Victorek) {
 			productList.quickSortbyName(Victorek, 0, Victorek.size() - 1);
 			for (int i = 0; i < Victorek.size(); i++)
 			{
-				std::cout << i << "||" << Victorek[i]->getName() << "||" << Victorek[i]->getPrice() << "$" << std::endl;
+				std::cout << proText(std::to_string(i), 3) << "||" << proText(Victorek[i]->getName(), 34) << "||" << proText(std::to_string(Victorek[i]->getPrice()), 14) << "$" << std::endl;
 			}
 			break;
 		case 3:
 			productList.quickSortbyPrice(Victorek, 0, Victorek.size() - 1);
 			for (int i = 0; i < Victorek.size(); i++)
-			{
-				std::cout << i << "||" << Victorek[i]->getName() << "||" << Victorek[i]->getPrice() << "$" << std::endl;
+			{   
+				std::cout << proText(std::to_string(i), 3) << "||" << proText(Victorek[i]->getName(), 34) << "||" << proText(std::to_string(Victorek[i]->getPrice()), 14) << "$" << std::endl;
 			}
 			break;
 

@@ -1,5 +1,6 @@
 #pragma once
 #include "Cart.h"
+#include "Margin.h"
 #include <string>
 void Cart::addToCart(Item *addedItem) {
 	shoppingList.push_back({ addedItem, 1 });
@@ -9,7 +10,7 @@ void Cart::addToCart(Item *addedItem) {
 void Cart::reviewCart() {
 	int position = 0;
 	for (auto item =shoppingList.begin(); item != shoppingList.end(); item++) {
-			std::cout <<position<<": " << item->item->getSupplier() << "||" << item->item->getName() << "||" << item->item->getPrice() << "||"<<item->quantity << "\n";
+			std::cout <<position<<": " << proText(item->item->getSupplier(), 14) << "||" << proText(item->item->getName(), 34) << "||" << proText(std::to_string(item->item->getPrice()), 14) << "||"<<item->quantity << "\n";
 			position++;
 			totalPrice += item->item->getPrice()*item->quantity;
 	}

@@ -13,9 +13,5 @@ public:
 	void deleteItemFromCart(int position);
 	void reviewCart();
 	void changeQuantity(int position, int quantity);
-	void userInteraction();
-	
-	
-	
-	
+	void userInteraction();	
 };
