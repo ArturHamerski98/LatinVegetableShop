@@ -1,6 +1,7 @@
 #pragma once
 #include<iostream>
 #include<list>
+#include<vector>
 class User
 {
 public:
@@ -10,7 +11,8 @@ public:
 	std::string eMail;
 	std::string shippingAdress;
 	std::string billingAdress;
-
+	 int Isloged = -1;
+	std::vector < std::vector < std::string >> allUsers;
 	void setLogin();
 	void setPassword();
 	void setName();
@@ -18,5 +20,7 @@ public:
 	void setShippingAdress();
 	void setBillingAdress();
 	void createAccount();
-
+	void saveAccpuntData();
+	
+	void LogIn();
 };

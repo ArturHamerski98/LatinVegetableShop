@@ -9,9 +9,12 @@
 #include <ostream>
 #include<fstream>
 #include <ctime>
+#include "User.h"
+#include "Menu.h"
 
 void CheckOutAndPayment::setName()
 {
+	//if(Menu::Isloged > 0) czy mzna zrobic Isloged static tak zeby nie bylo obiektu a kalsy ?? 
 	std::cout << "Enter name:";
 	std::cin >> name;
 	if (!(std::regex_match(name, std::regex("^[A-Za-z]+$"))))

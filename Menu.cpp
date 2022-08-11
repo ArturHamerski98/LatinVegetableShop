@@ -24,8 +24,9 @@ void Menu::superMenu() {
 		std::cout << " 7. Sorting products by price (descending order)\n";
 		std::cout << " 8. Go to cart\n";
 		std::cout << " 9. Order confirmation\n";
-		std::cout << " 10. Log in\n";
-		std::cout << " 11. Admin panel\n";
+		std::cout << " 10. createAccount\n";
+		std::cout << " 11. Log in\n";
+		std::cout << " 12. Admin panel\n";
 		std::cin >> choice;
 
 
@@ -75,6 +76,9 @@ void Menu::superMenu() {
 				break;
 			case 10:
 				user.createAccount();
+				break;
+			case 11:
+				user.LogIn();
 				break;
 			}
 			break;
