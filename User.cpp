@@ -1,4 +1,5 @@
 #include "User.h"
+#include <regex>
 
 void User::setLogin()
 {
@@ -6,13 +7,21 @@ void User::setLogin()
 	std::cin >> login;
 	if (!(std::regex_match(name, std::regex("[^\s]+"))))
 	{
-		std::cout << "Invalid input, name should look like: Zbigniew\n";
+		std::cout << "Invalid input, name should look like: Zbigniew Krawczyk\n";
 		this->setName();
 	}
 }
 
 void User::setPassword()
 {
+	std::cout << "Create password:";
+	std::cin >> password;
+
+	if (!(std::regex_match(password, std::regex("^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$"))))
+	{
+		std::cout << "Your password must contain minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character\n";
+		this->setPassword();
+	}
 }
 
 void User::setName()
@@ -36,7 +45,7 @@ void User::setEmail()
 	{
 		std::cout << "Invalid input, email should look like: xyz@gmail.com\n";
 
-		this->setEMail();
+		this->setEmail();
 	}
 }
 
@@ -58,5 +67,8 @@ void User::createAccount()
 	setPassword();
 	setEmail();
 	setName();
-
+	setBillingAdress();
+	setShippingAdress();
 }
+
+

@@ -3,6 +3,7 @@
 #include<list>
 class User
 {
+public:
 	std::string login;
 	std::string password;
 	std::string name;
@@ -10,7 +11,6 @@ class User
 	std::string shippingAdress;
 	std::string billingAdress;
 
-public:
 	void setLogin();
 	void setPassword();
 	void setName();
@@ -19,4 +19,4 @@ public:
 	void setBillingAdress();
 	void createAccount();
 
-}
+};

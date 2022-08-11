@@ -5,11 +5,8 @@
 void Menu::superMenu() {
 
 	
-
 	int choice = 0;
 	productList.readingDataFromCSVFile();
-	
-	
 	int temp = 0;
 	while (true)
 	{
@@ -27,7 +24,8 @@ void Menu::superMenu() {
 		std::cout << " 7. Sorting products by price (descending order)\n";
 		std::cout << " 8. Go to cart\n";
 		std::cout << " 9. Order confirmation\n";
-		std::cout << " 10. Admin panel\n";
+		std::cout << " 10. Log in\n";
+		std::cout << " 11. Admin panel\n";
 		std::cin >> choice;
 
 
@@ -75,6 +73,9 @@ void Menu::superMenu() {
 				break;
 			case 9:
 				break;
+			case 10:
+				user.createAccount();
+				break;
 			}
 			break;
 		}
@@ -88,6 +89,7 @@ Menu::Menu()
 {
 	productList = ProductList();
 	cart = Cart();
+	user = User();
 }
 
 void Menu::askAfterFiltering(std::vector<Item*> Victorek) {
