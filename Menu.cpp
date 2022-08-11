@@ -74,6 +74,13 @@ void Menu::superMenu() {
 				cart.userInteraction();
 				break;
 			case 9:
+				system("pause");
+				break;
+			case 10:
+				cart.adminLogToTXT();
+				break;
+			case 11:
+				productList.addNewProduct();
 				break;
 			}
 			break;
@@ -163,3 +170,4 @@ void Menu::askAfterFiltering(std::vector<Item*> Victorek) {
 		}
 	}
 }
+

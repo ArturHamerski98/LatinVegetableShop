@@ -9,6 +9,12 @@ void Cart::addToCart(Item *addedItem) {
 	}
 	shoppingList.push_back({ addedItem, 1 });
 	addedItem->setQuantity(addedItem->getQuantity() - 1);
+	adminLog += getTime();
+	adminLog += " ";
+	adminLog += "anonymous person ";
+	adminLog += "added ";
+	adminLog += addedItem->getName();
+	adminLog += "\n";
 }
 
 void Cart::reviewCart() {
@@ -28,6 +34,13 @@ void Cart::deleteItemFromCart(int position) {
 	{
 		if (temp == position)
 		{
+			adminLog += getTime();
+			adminLog += " ";
+			adminLog += "anonymous person ";
+			adminLog += "deleted ";
+			adminLog += itr->item->getName();
+			adminLog += "\n";
+
 			itr->item->setQuantity(itr->item->getQuantity()+itr->quantity);
 			shoppingList.erase(itr);
 			break;
@@ -46,6 +59,13 @@ void Cart::changeQuantity(int position, int quantity) {
 					system("pause");
 					return;
 				}
+				adminLog += getTime();
+				adminLog += " ";
+				adminLog += "anonymous person ";
+				adminLog += "changed quantity of  ";
+				adminLog += itr->item->getName();
+				adminLog += "\n";
+
 			itr->item->setQuantity((itr->item->getQuantity() - quantity + itr->quantity));
 			itr->quantity = quantity;
 			
@@ -105,4 +125,45 @@ void Cart::userInteraction() {
 
 	}
 	
+}
+std::string Cart::getTime(){
+	time_t now = time(0);
+	tm* ltm = localtime(&now);
+
+	std::string dateString = "", tmp = "";
+	tmp = std::to_string(ltm->tm_mday);
+	if (tmp.length() == 1)
+		tmp.insert(0, "0");
+	dateString += tmp;
+	dateString += "-";
+	tmp = std::to_string(1 + ltm->tm_mon);
+	if (tmp.length() == 1)
+		tmp.insert(0, "0");
+	dateString += tmp;
+	dateString += "-";
+	tmp = std::to_string(1900 + ltm->tm_year);
+	dateString += tmp;
+	dateString += " ";
+	tmp = std::to_string(ltm->tm_hour);
+	if (tmp.length() == 1)
+		tmp.insert(0, "0");
+	dateString += tmp;
+	dateString += ":";
+	tmp = std::to_string(1 + ltm->tm_min);
+	if (tmp.length() == 1)
+		tmp.insert(0, "0");
+	dateString += tmp;
+	dateString += ":";
+	tmp = std::to_string(1 + ltm->tm_sec);
+	if (tmp.length() == 1)
+		tmp.insert(0, "0");
+	dateString += tmp;
+
+	return dateString;
+}
+void Cart::adminLogToTXT() {
+	std::ofstream myfile;
+	myfile.open("adminLog.txt");
+	myfile << adminLog;
+	myfile.close();
 }

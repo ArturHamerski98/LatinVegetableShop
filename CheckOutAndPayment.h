@@ -28,6 +28,5 @@ public:
 	void saveData();
 	void setBoughtItems(std::string items);
 	void setTotalPrice(double tp);
-
 };
 

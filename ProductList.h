@@ -21,4 +21,5 @@ public:
 	void quickSortbyNameDescending(std::vector<Item*>& arr, int l, int r);
 	Item getItem(int ID);
 	static std::string proText(std::string a, int margin);
+	void addNewProduct();
 };

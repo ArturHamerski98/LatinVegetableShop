@@ -5,7 +5,6 @@
 
 class Menu {
 public:
-	std::string log;
 	ProductList productList;
 	Cart cart;
 public:

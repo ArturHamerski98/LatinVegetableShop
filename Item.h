@@ -3,7 +3,6 @@
 #include<list>
 class Item
 {
-
     int ID;
     std::string name;
     std::string description;
@@ -32,5 +31,4 @@ public:
     void showDetails();
     void setQuantity(int value);
     int getQuantity();
-
 };
