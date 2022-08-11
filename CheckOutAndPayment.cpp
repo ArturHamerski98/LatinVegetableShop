@@ -12,7 +12,7 @@ void CheckOutAndPayment::setName()
 	std::cin >> name;
 	if (!(std::regex_match(name, std::regex("^[A-Za-z]+$"))))
 	{
-		std::cout << "Invalid input, name should look like: Zbigniew\n";
+		std::cout << "Invalid input, name should look like: Zbigniew Krawczyk\n";
 		this->setName();
 	}
 }

@@ -1,7 +1,7 @@
 #pragma once
 #include<iostream>
 #include<list>
-class User
+class Userek
 {
 public:
 	std::string login;
