@@ -89,7 +89,7 @@ Menu::Menu()
 {
 	productList = ProductList();
 	cart = Cart();
-	user = Userek();
+	user = User();
 }
 
 void Menu::askAfterFiltering(std::vector<Item*> Victorek) {
