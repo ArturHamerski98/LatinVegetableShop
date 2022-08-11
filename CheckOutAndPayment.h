@@ -1,8 +1,10 @@
 #pragma once
 #include<iostream>
+#include<fstream>
+#include "Cart.h"
 class CheckOutAndPayment
 {
-	
+
 	double totalPrice;
 	std::string name;
 	std::string eMail;
@@ -10,6 +12,7 @@ class CheckOutAndPayment
 	std::string billingAdress;
 	std::string shippingAdress;
 	std::string boughtItems;
+	
 public:
 	CheckOutAndPayment()
 	{
@@ -19,6 +22,7 @@ public:
 		billingAdress = "";
 		shippingAdress = "";
 	}
+	void orderConfirmation();
 	void setName();
 	void setEMail();
 	void setPhoneNumber();
@@ -28,6 +32,12 @@ public:
 	void saveData();
 	void setBoughtItems(std::string items);
 	void setTotalPrice(double tp);
+	std::string GetName();
+	void choosePayment();
+	void CreditCardNumber();
+	void CSVNumber();
+	void ExpirationDate();
+	void BlikNumberrr();
 
 };
 

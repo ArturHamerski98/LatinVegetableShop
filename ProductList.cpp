@@ -20,7 +20,6 @@ void ProductList::readingDataFromCSVFile()
             content.push_back(row);
         }
         file.close();
-
     }
     else
         std::cout << "Could not open the file\n";
@@ -74,12 +73,8 @@ std::vector<Item*> ProductList::filteringSuppliers(std::vector<Item*>& arr)
             supplierVector.push_back(arr[i]);
             temp2++;
         }
-
     }
-   
-
     return supplierVector;
-
 }
 
 std::vector<Item*> ProductList::filteringCategory(std::vector<Item*>& arr)
@@ -108,8 +103,6 @@ std::vector<Item*> ProductList::filteringCategory(std::vector<Item*>& arr)
 
     int temp = 0;
 
-
-  
     for (int i = 0; i < arr.size(); i++)
     {
         if (arr[i]->getSupplier() == chosenCategory)
@@ -118,9 +111,7 @@ std::vector<Item*> ProductList::filteringCategory(std::vector<Item*>& arr)
             categoryVector1.push_back(arr[i]);
             temp++;
         }
-
     }
-
     return categoryVector1;
 }
 
@@ -128,7 +119,6 @@ void ProductList::displayProducts(std::vector<Item*>& arr)
 {
     for(int i =0;i<arr.size();i++)
         std::cout << proText(std::to_string(arr[i]->getID() - 1), 4) << "||" << proText(arr[i]->getName(), 34) << "||" << proText(std::to_string(arr[i]->getPrice()), 16) << "$||" << arr[i]->getQuantity() << std::endl;
-
 }
 
 void ProductList::quickSortbyName(std::vector<Item*>&arr, int l, int r)

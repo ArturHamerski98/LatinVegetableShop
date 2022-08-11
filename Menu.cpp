@@ -5,16 +5,12 @@
 
 void Menu::superMenu() {
 
-	
-
 	int choice = 0;
 	productList.readingDataFromCSVFile();
-	
-	
+		
 	int temp = 0;
 	while (true)
-	{
-		
+	{	
 		if (temp != 0)
 			system("cls");
 		temp++;
@@ -28,29 +24,19 @@ void Menu::superMenu() {
 		std::cout << " 7. Order confirmation\n";
 		std::cout << " 8. Admin panel\n";
 
-
-
-
-
 		std::cout << "Your choice:";
 		std::cin >> choice;
-
 
 		while (true) {
 
 			switch (choice) {
 
 			case 1:
-
-				productList.displayProducts(productList.vectorofAll);
-				
-				
+				productList.displayProducts(productList.vectorofAll);				
 				askAfterFiltering(productList.vectorofAll);
 				break;
-
 			case 2:
 				askAfterFiltering(productList.filteringSuppliers(productList.vectorofAll));
-
 				break;
 			case 3:
 				askAfterFiltering(productList.filteringCategory(productList.vectorofAll));
