@@ -4,13 +4,16 @@
 
 void Menu::superMenu() {
 
-	
+
+
 	int choice = 0;
 	productList.readingDataFromCSVFile();
+
+
 	int temp = 0;
 	while (true)
 	{
-		
+
 		if (temp != 0)
 			system("cls");
 		temp++;
@@ -23,9 +26,10 @@ void Menu::superMenu() {
 		std::cout << " 6. Sorting all products by price (ascending order)\n";
 		std::cout << " 7. Sorting products by price (descending order)\n";
 		std::cout << " 8. Go to cart\n";
-		std::cout << " 9. Order confirmation\n";
-		std::cout << " 10. Log in\n";
-		std::cout << " 11. Admin panel\n";
+		if(isloged ==false)std::cout << " 9. Create account\n";
+		if (isloged == false)std::cout << " 10. Log in\n";
+		if (user.isAdmin == true)std::cout << " 11. ADMIN::Add products\n";
+		if (user.isAdmin == true)std::cout << " 12. ADMIN::Show logs\n";
 		std::cin >> choice;
 
 
@@ -47,13 +51,13 @@ void Menu::superMenu() {
 				askAfterFiltering(productList.filteringCategory(productList.vectorofAll));
 				break;
 
-			case 4: 
-				
-				productList.quickSortbyNameAscending(productList.vectorofAll,0, productList.vectorofAll.size() - 1);
+			case 4:
+
+				productList.quickSortbyNameAscending(productList.vectorofAll, 0, productList.vectorofAll.size() - 1);
 				productList.displayProducts(productList.vectorofAll);
 				askAfterFiltering(productList.vectorofAll);
 				break;
-			case 5: 
+			case 5:
 				productList.quickSortbyNameDescending(productList.vectorofAll, 0, productList.vectorofAll.size() - 1);
 				productList.displayProducts(productList.vectorofAll);
 				askAfterFiltering(productList.vectorofAll);
@@ -72,24 +76,39 @@ void Menu::superMenu() {
 				cart.userInteraction();
 				break;
 			case 9:
+				user.createAccount();
+				isloged = true;
 				break;
 			case 10:
-				user.createAccount();
+				user.LogIn();
+				isloged = true;
+				break;
+			case 11:
+				productList.addNewProduct();
+				cart.adminLogToTXT();
+				break;
+			case 12:
+				//tu admin ma mozliwosc wyswietlic logi
+				break;
+			case 0:
+				//tutaj dodaj¹ sie logi i ma te¿ siê aktualizowaæ aktualny stan magazynowy(plik CSV nadpisujemy tym co jest w vectorze)
+				cart.adminLogToTXT();
 				break;
 			}
 			break;
 		}
+			
+		}
 
 	}
-	
 
-}
+
+
 
 Menu::Menu()
 {
 	productList = ProductList();
 	cart = Cart();
-	user = User();
 }
 
 void Menu::askAfterFiltering(std::vector<Item*> Victorek) {
