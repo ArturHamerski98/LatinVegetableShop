@@ -208,35 +208,6 @@ void ProductList::quickSortbyNameAscending(std::vector<Item*>& arr, int l, int r
     
 }
 
-//void ProductList::quickSortbyNameDescending(std::vector<Item>& arr, int l, int r) // z-a
-//{
-//    int i = l;
-//    int j = r;
-//    int temp = i;
-//
-//    if (l < r)
-//    {
-//        while (i < j)
-//        {
-//            while (arr[j].getName() <= arr[temp].getName() && i < j)
-//            {
-//                j--;
-//            }
-//            arr[i] = arr[j];
-//
-//            while (arr[i].getName() >= arr[temp].getName() && i < j)
-//            {
-//                i++;
-//            }
-//            arr[j] = arr[i];
-//        }
-//        arr[i].getName() = arr[temp].getName();
-//
-//        quickSortbyNameDescending(arr, l, i - 1);
-//        quickSortbyNameDescending(arr, j + 1, r);
-//    }
-//}
-
 void ProductList::quickSortbyNameDescending(std::vector<Item*>& arr, int l, int r) // z-a
 {
     if (l < r) {
@@ -299,4 +270,34 @@ void ProductList::quickSortbyPriceDescending(std::vector<Item*>& arr, int l, int
         quickSortbyPriceDescending(arr, l, j - 1);
         quickSortbyPriceDescending(arr, j + 1, r);
     }
+}
+
+void ProductList::addNewProduct() {
+    int newID = vectorofAll.size() + 1;
+    std::string newName;
+    std::cout << "Type in name of the product:\n";
+    std::cin >> newName;
+    std::string newDescription;
+    std::cout << "Type in the description of the product:\n";
+    std::cin >> newDescription;
+    double newPrice;
+    std::cout << "Type in the price of the product:\n";
+    std::cin >> newPrice;
+    bool newAvailability;
+    std::cout << "Determine if the product is available or not (1 or 0):\n";
+    std::cin >> newAvailability;
+    std::string newSupplier;
+    std::cout << "Specify the supplier:\n";
+    std::cin >> newSupplier;
+    std::string newCategory;
+    std::cout << "Specify the category (either fresh, short expiry date or at your own risk):\n";
+    std::cin >> newCategory;
+    int newQuantity;
+    std::cout << "Specify the quantity of the product:\n";
+    std::cin >> newQuantity;
+    Item* item = new Item(newID, newName, newDescription, newPrice, newAvailability, newSupplier, newCategory, newQuantity);
+    vectorofAll.push_back(item);
+    std::ofstream file("Items.csv", std::ios::app);
+    file << std::endl << newID << "," << newName << "," << newDescription << "," << newPrice << "," << newAvailability << "," << newSupplier << "," << newCategory;
+    file.close();
 }

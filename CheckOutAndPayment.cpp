@@ -9,12 +9,10 @@
 #include <ostream>
 #include<fstream>
 #include <ctime>
-#include "User.h"
-#include "Menu.h"
 
 void CheckOutAndPayment::setName()
 {
-	//if(Menu::Isloged > 0) czy mzna zrobic Isloged static tak zeby nie bylo obiektu a kalsy ?? 
+	std::cin.ignore(std::numeric_limits<int>::max(), '\n');
 	std::cout << "Enter name:";
 	std::cin >> name;
 	if (!(std::regex_match(name, std::regex("^[A-Za-z]+$"))))
@@ -48,17 +46,18 @@ void CheckOutAndPayment::setPhoneNumber()
 		std::cout << "Invalid input, phone numer should look like: 123-456-789\n";
 		this->setPhoneNumber();
 	}
-
 }
 
 void CheckOutAndPayment::setBillingAdress()
 {
+	std::cin.ignore(std::numeric_limits<int>::max(), '\n');
 	std::cout << "Enter billing adress:";
 	std::cin >> billingAdress;
 }
 
 void CheckOutAndPayment::setShipingAdress()
 {
+	std::cin.ignore(std::numeric_limits<int>::max(), '\n');
 	std::cout << "Enter shipping adrss:";
 	std::cin >> shippingAdress;
 }
@@ -73,6 +72,9 @@ void CheckOutAndPayment::checkOut()
 	saveData();
 	choosePayment();
 	orderConfirmation();
+
+	std::cout << "\nThank you for shopping with us! We sent confirmation of your purchase to your email. \n\n";
+
 }
 
 void CheckOutAndPayment::saveData()
