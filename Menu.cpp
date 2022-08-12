@@ -91,7 +91,7 @@ void Menu::superMenu() {
 				//tu admin ma mozliwosc wyswietlic logi
 				break;
 			case 0:
-				//tutaj dodaj¹ sie logi i ma te¿ siê aktualizowaæ aktualny stan magazynowy(plik CSV nadpisujemy tym co jest w vectorze)
+				//tutaj dodajÄ… sie logi i ma teÅ¼ siÄ™ aktualizowaÄ‡ aktualny stan magazynowy(plik CSV nadpisujemy tym co jest w vectorze)
 				cart.adminLogToTXT();
 				break;
 			}
