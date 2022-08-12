@@ -10,6 +10,7 @@ public:
 	ProductList productList;
 	Cart cart;
 	User user;
+	bool isloged;
 public:
 	void superMenu();
 	void askAfterFiltering(std::vector<Item*>);
